@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: ImageStream
+metadata:
+  name: cassandra
+spec:
+  tags:
+  - annotations:
+      openshift.io/imported-from: cassandra
+    from:
+      kind: DockerImage
+      name: 172.30.40.148:5000/datafoundry-servicebroker/cassandra:v8
+    generation: 2
+    importPolicy: {}
+    name: v8
+status:
+  dockerImageRepository: ""
