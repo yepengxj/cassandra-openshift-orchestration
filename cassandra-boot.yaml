@@ -26,6 +26,8 @@ spec:
       value: 512M
     - name: HEAP_NEWSIZE
       value: 100M
+    - name: CASSANDRA_SERVICE
+      value: sb-instanceid-cassandra
     - name: POD_NAMESPACE
       valueFrom:
         fieldRef:
