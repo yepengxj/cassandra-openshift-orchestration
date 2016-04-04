@@ -28,5 +28,7 @@ oc create -f cassandra-ha.yaml
 删除这个用户
 `drop user cassandra;`
 
+##0x06甚至：这个套餐时可以升级的，简单的把relicas设置一下就好了
+
 
 
