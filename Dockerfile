@@ -16,13 +16,13 @@ FROM google/debian:wheezy
 
 COPY cassandra.list /etc/apt/sources.list.d/cassandra.list
 
-RUN gpg --keyserver pgp.mit.edu --recv-keys F758CE318D77295D
+RUN gpg --keyserver keyserver.ubuntu.com:11371 --recv-keys F758CE318D77295D
 RUN gpg --export --armor F758CE318D77295D | apt-key add -
 
-RUN gpg --keyserver pgp.mit.edu --recv-keys 2B5C1B00
+RUN gpg --keyserver keyserver.ubuntu.com:11371 --recv-keys 2B5C1B00
 RUN gpg --export --armor 2B5C1B00 | apt-key add -
 
-RUN gpg --keyserver pgp.mit.edu --recv-keys 0353B12C
+RUN gpg --keyserver keyserver.ubuntu.com:11371 --recv-keys 0353B12C
 RUN gpg --export --armor 0353B12C | apt-key add -
 
 RUN apt-get update
