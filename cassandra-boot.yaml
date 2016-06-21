@@ -2,8 +2,8 @@ apiVersion: v1
 kind: Pod
 metadata:
   labels:
-    app: sb-dfjdttee-cassandra
-  name: sb-dfjdttee-cassandra
+    app: sb-#cluser_uid#-cassandra
+  name: sb-#cluser_uid#-cassandra
 spec:
   containers:
   - args:
@@ -12,7 +12,7 @@ spec:
       limits:
         cpu: "0.1"
     image: 172.30.188.59:5000/yepeng/cassandra-openshift-orchestration:latest
-    name: sb-dfjdttee-cassandra
+    name: sb-#cluser_uid#-cassandra
     ports:
     - name: cql
       containerPort: 9042
@@ -27,9 +27,9 @@ spec:
     - name: HEAP_NEWSIZE
       value: 100M
     - name: cluster_name
-      value: sb-dfjdttee-cassandra
+      value: sb-#cluser_uid#-cassandra
     - name: CASSANDRA_SERVICE
-      value: sb-dfjdttee-cassandra
+      value: sb-#cluser_uid#-cassandra
     - name: POD_NAMESPACE
       valueFrom:
         fieldRef:
@@ -44,13 +44,13 @@ apiVersion: v1
 kind: Service
 metadata:
   labels:
-    app: sb-dfjdttee-cassandra
-  name: sb-dfjdttee-cassandra
+    app: sb-#cluser_uid#-cassandra
+  name: sb-#cluser_uid#-cassandra
 spec:
   ports:
     - port: 9042
   selector:
-    app: sb-dfjdttee-cassandra
+    app: sb-#cluser_uid#-cassandra
 
 ---
 
@@ -58,9 +58,9 @@ spec:
 apiVersion: v1
 kind: Route
 metadata:
-  name: sb-dfjdttee-cassandra
+  name: sb-#cluser_uid#-cassandra
 spec:
-  host: sb-dfjdttee-cassandra.app.dataos.io
+  host: sb-#cluser_uid#-cassandra.app.dataos.io
   to:
     kind: Service
-    name: sb-dfjdttee-cassandra
+    name: sb-#cluser_uid#-cassandra
