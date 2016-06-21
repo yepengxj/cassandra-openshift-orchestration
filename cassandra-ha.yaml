@@ -42,6 +42,11 @@ spec:
           volumeMounts:
             - mountPath: /cassandra_data
               name: data
+          livenessProbe:
+            exec:
+              command:
+              - /bin/bash
+              - /status_check.sh
       volumes:
         - name: data
           emptyDir: {}
