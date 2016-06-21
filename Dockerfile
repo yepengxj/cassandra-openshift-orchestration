@@ -38,6 +38,7 @@ RUN gpg --keyserver pgp.mit.edu --recv-keys F758CE318D77295D && \
 COPY cassandra.yaml /etc/cassandra/cassandra.yaml
 COPY logback.xml /etc/cassandra/logback.xml
 COPY kubernetes-cassandra.jar /kubernetes-cassandra.jar
+COPY status_check.sh /status_check.sh
 
 VOLUME ["/cassandra_data/data"]    
 
