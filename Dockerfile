@@ -12,8 +12,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-FROM google/debian:jessie
+FROM registry.dataos.io/library/debian:jessie-backports
 
+RUN sed -i "s/http:\/\/httpredir.debian.org/http:\/\/mirrors.aliyun.com/g" /etc/apt/sources.list && \
+    sed -i "s/http:\/\/security.debian.org/http:\/\/mirrors.aliyun.com\/debian-security/g" /etc/apt/sources.list
+    
 COPY cassandra.list /etc/apt/sources.list.d/cassandra.list
 COPY run.sh /run.sh
 
@@ -24,7 +27,8 @@ RUN gpg --keyserver pgp.mit.edu --recv-keys F758CE318D77295D && \
   gpg --keyserver pgp.mit.edu --recv-keys 0353B12C && \
   gpg --export --armor 0353B12C | apt-key add - && \
   apt-get update && \
-  apt-get -qq -y install procps  cassandra openjdk-8-jre-headless && \
+  apt-get -qq -y install procps   openjdk-8-jre-headless &&
+  apt-get -qq -y install cassandra=2.1.11 && \
   chmod a+rx /run.sh && \
   mkdir -p /cassandra_data/data && \
   chown -R cassandra.cassandra /etc/cassandra /cassandra_data && \
