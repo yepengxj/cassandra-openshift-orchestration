@@ -16,9 +16,9 @@
 
 perl -pi -e "s/%%ip%%/$(hostname -I)/g" /etc/cassandra/cassandra.yaml
 if [ -z $cluster_name ];then
-   sed -i 's/#cluster_name#/cluster_test/g' /etc/cassandra/cassandra.yaml
+   sed -i "s/#cluster_name#/cluster_test/g" /etc/cassandra/cassandra.yaml
 else
-   sed -i 's/#cluster_name#/$cluster_name/g' /etc/cassandra/cassandra.yaml
+   sed -i "s/#cluster_name#/$cluster_name/g" /etc/cassandra/cassandra.yaml
 fi
 export CLASSPATH=/kubernetes-cassandra.jar
 cassandra -f
