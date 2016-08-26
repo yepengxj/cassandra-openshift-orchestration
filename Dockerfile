@@ -22,7 +22,6 @@ COPY run.sh /run.sh
 RUN chmod a+rx /run.sh && \
   mkdir -p /cassandra_data/data && \
   chown -R cassandra:cassandra /etc/cassandra /cassandra_data && \
-  chmod o+w -R /etc/cassandra /cassandra_data && \
   rm -rf /var/lib/apt/lists/* && \
   rm -rf /usr/share/doc/ && \
   rm -rf /usr/share/doc-base/ && \
@@ -34,7 +33,7 @@ COPY logback.xml /etc/cassandra/logback.xml
 COPY kubernetes-cassandra.jar /kubernetes-cassandra.jar
 COPY status_check.sh /status_check.sh
 
-VOLUME ["/cassandra_data/data"]    
+VOLUME ["/cassandra_data"]    
 
 USER cassandra
 
